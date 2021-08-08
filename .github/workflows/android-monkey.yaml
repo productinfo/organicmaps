@@ -1,29 +1,8 @@
 name: Android Monkey
 on:
   workflow_dispatch: # Manual trigger
-  push: # Please don't change to pull_request because it can expose secrets
-    branches:
-      - master
-    paths-ignore:
-    - .github/workflows/android-release*
-    - .github/workflows/android-check*
-    - .github/workflows/android-beta*
-    - .github/workflows/linux*
-    - '**/*_tests/**'
-    - '**/CMakeLists.txt'
-    - CONTRIBUTORS
-    - LICENSE
-    - NOTICE
-    - README.md
-    - iphone/**
-    - xcode/**
-    - docs/**
-    - generator/**
-    - packaging/**
-    - pyhelpers/**
-    - qt*/**
-    - skin_generator/**
-    - track_generator/**
+  schedule:
+    - cron:  '0 5 * * *' # Once per day at 05:00 UTC
 
 jobs:
   android-google-debug:
